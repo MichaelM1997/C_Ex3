@@ -16,18 +16,17 @@ int main(){
     char choice;
     char l;
     
-    scanf("%s %c %c",word, &choice, &l);
+    scanf("%s %c %c",word,&choice,&l);
     
-    switch (choice) {
-        case 'a':
-            print_lines(word);
-            break;
-        case 'b':
-            print_similar_words(word);
-            break;
-        default:
-            printf("Choose a or b");
-            break;
+    if (c == 'a'){
+        print_lines(word);
+    }
+
+    else if (c == 'b'){
+        print_similar_words(word);
+    } 
+    else{
+        printf("choose a or b");
     }
     return 0;
 }
