@@ -67,8 +67,7 @@ int similar(char *s, char *t, int n){
         return 0;
     }
     int i = 0, j = 0;
-    while (i < strlen(s) && j < strlen(t))
-    {
+    while (i < strlen(s)) {
         if (s[i] != t[j]) {
             n--;
             if(n < 0){
