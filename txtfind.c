@@ -57,11 +57,19 @@ int get_Line(char s[]) {
 
 int getWord(char s[]) {
     int numOfChars = 0;
-    int ch;
-    while (((ch = getchar()) != '\n') && (ch != '\t') && (ch != '\r') && (ch != ' ') && (ch != EOF)) {
-        s[numOfChars++] = (char) ch;
+   while(numOfChars < WORD){
+        if(scanf("%c",&w[numOfChars]) == EOF){
+            w[numOfChars] = '\0';
+            break;
+        }
+        else if(w[numOfChars] == '\n' || w[numOfChars] == '\t' || w[numOfChars] == ' '){
+            w[numOfChars] = '\0';
+            break;
+        }
     }
-    s[numOfChars] = '\0';
+    if (numOfChars == WORD){
+        w[numOfChars - 1] = '\0';
+    }
     return numOfChars;
 }
 
