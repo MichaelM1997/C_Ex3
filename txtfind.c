@@ -5,7 +5,7 @@
 #define LINE 256
 
 int getWord(char s[]);
-int get_Line(char w[]);
+int get_Line(char s[]);
 int substring( char *str1, char *str2);
 int similar(char *s, char *t, int n);
 void print_lines(char *str);
@@ -15,20 +15,44 @@ int main(){
     char word[WORD];
     char choice;
     char l;
-    
-    scanf("%s %c %c",word,&choice,&l);
-    
-    if (choice == 'a'){
-        print_lines(word);
-    }
+    scanf("%s %c %c",word, &choice, &l);
 
-    else if (choice == 'b'){
-        print_similar_words(word);
-    } 
-    else{
-        printf("choose a or b");
+    switch (choice) {
+        case 'a':
+            print_lines(word);
+            break;
+        case 'b':
+            print_similar_words(word);
+            break;
+        default:
+            printf("Choose a or b");
+            break;
     }
     return 0;
+}
+
+int get_Line(char s[]) {
+    int numOfChars = 0;
+    int ch = 0;
+    while ((ch != '\n') && (ch != '\r')  && (numOfChars < LINE - 1)) {
+        if ((ch = getchar()) != EOF){
+            if (ch != '\r'){
+                s[numOfChars] = (char) ch;
+            }
+            else{
+                s[numOfChars] = '\n';
+            }
+        }
+        else{
+            return 0;
+        }
+    numOfChars++;
+    }
+    if (numOfChars == 0){
+        return 1;
+    }
+    s[numOfChars] = '\0';
+    return numOfChars;
 }
 
 int getWord(char s[]) {
@@ -39,25 +63,6 @@ int getWord(char s[]) {
     }
     s[numOfChars] = '\0';
     return numOfChars;
-}
-
-int get_Line(char w[]) {
-    
-    for (int i = 0; i < LINE; i++){
-        int num = scanf("%c",&s[i]);
-        if (num == EOF){
-            s[i] = '\0';
-            break;
-        }
-        if (s[i] == '\n'){
-            break;
-        }
-    }
-    if (s[i] == LINE){
-        s[i-1] = '\n';
-    }
-    
-    return i;
 }
 
 int substring( char *str1, char *str2) {
