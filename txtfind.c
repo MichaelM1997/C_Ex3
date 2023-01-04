@@ -42,13 +42,22 @@ int getWord(char s[]) {
 }
 
 int get_Line(char w[]) {
-    int numOfChars = 0;
-    int ch;
-    while (((ch = getchar()) != '\n') && (ch != EOF) && (numOfChars < LINE - 1)) {
-        w[numOfChars++] = (char) ch;
+    
+    for (int i = 0; i < LINE; i++){
+        int num = scanf("%c",&s[i]);
+        if (num == EOF){
+            s[i] = '\0';
+            break;
+        }
+        if (s[i] == '\n'){
+            break;
+        }
     }
-    w[numOfChars] = '\0';
-    return numOfChars;
+    if (s[i] == LINE){
+        s[i-1] = '\n';
+    }
+    
+    return i;
 }
 
 int substring( char *str1, char *str2) {
