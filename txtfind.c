@@ -50,10 +50,13 @@ int getword(char w[])
 // substring: return 1 if str1 is a substring of str2, 0 otherwise
 int substring(char *str1, char *str2){
 
-    if(strstr(str1, str2) != NULL) {
-        return 1;
+   for (int i = 0; i < strlen(str2) - strlen(str1) + 1; i++){
+        // compare the characters in str1 to the corresponding characters in str2
+        if (strncmp(str1, str2 + i, strlen(str1)) == 0){
+            return 1; // str1 is a substring of str2
+        }
     }
-    return 0;
+    return 0; // str1 is not a substring of str2
 }
 
 // similar: return 1 if it is possible to get t from s by removing at most n characters, 0 otherwise
