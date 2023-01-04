@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#define LINE 256 // maximum length of the input line
-#define WORD 30
+#define LINE 256 // maximum line
+#define WORD 30 // maximum word
 
-// getline: read a line into s, return length
 int get_line(char s[]){
     int i = 0,ch = 0;
 
@@ -30,7 +29,6 @@ int get_line(char s[]){
     return i;
 }
 
-// getword: read a word into w, return length
 int getword(char w[])
 {
     int ch, i = 0;
@@ -40,26 +38,24 @@ int getword(char w[])
         i++;
     }
         
-    // Handle empty line
+    // if ther's empty line
     if (ch == '\n' && i == 0)
         w[i++] = ch;
     w[i] = '\0';
     return i;
 }
 
-// substring: return 1 if str1 is a substring of str2, 0 otherwise
 int substring(char *str1, char *str2){
 
    for (int i = 0; i < strlen(str2) - strlen(str1) + 1; i++){
-        // compare the characters in str1 to the corresponding characters in str2
+        // compare the characters
         if (strncmp(str1, str2 + i, strlen(str1)) == 0){
-            return 1; // str1 is a substring of str2
+            return 1; 
         }
     }
-    return 0; // str1 is not a substring of str2
+    return 0;
 }
 
-// similar: return 1 if it is possible to get t from s by removing at most n characters, 0 otherwise
 int similar(char *s, char *t, int n){
     
     if (strcmp(s, t) == 0 && n == 0) {
@@ -85,22 +81,22 @@ int similar(char *s, char *t, int n){
     return 1;
 
 }
-// print_lines: print all the lines that contain the string str
+
 void print_lines(char *str)
 {
-    char temp_line[LINE]; // character array to hold the input temp_line
+    char temp_line[LINE];
 
     while (get_line(temp_line) > 0)
     {
         if (substring(str, temp_line)){
-            printf("%s", temp_line); // print the temp_line if it contains str
+            printf("%s", temp_line);
         }
     }
 }
 
 void print_similar_words(char *str) {
-    char temp_word[WORD]; // to store the words read from the input
-    while (getword(temp_word) > 0) { // read a temp_word from the input
+    char temp_word[WORD]; // store the words from input
+    while (getword(temp_word) > 0) { // read temp_word from input
         if (similar(temp_word, str, 1)) { // check if temp is similar to str
             printf("%s\n", temp_word); // print temp_word if it is similar to temp
         }
@@ -109,12 +105,11 @@ void print_similar_words(char *str) {
 
 int main() {
     char word[WORD];
-    //choice for the users choise and l for the blank line '\n'
+    
     char choice,l;
     //Gets the user choose
     scanf(" %s %c %c", word, &choice, &l);
-
-
+    
     if (choice == 'a') {
         print_lines(word);
     } else if (choice == 'b') {
