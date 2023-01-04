@@ -18,11 +18,11 @@ int main(){
     
     scanf("%s %c %c",word,&choice,&l);
     
-    if (c == 'a'){
+    if (choice == 'a'){
         print_lines(word);
     }
 
-    else if (c == 'b'){
+    else if (choice == 'b'){
         print_similar_words(word);
     } 
     else{
