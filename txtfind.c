@@ -15,7 +15,7 @@ int main(){
     char word[WORD];
     char choice;
     char l;
-    scanf("%s %c %c",word, &choice, &l);
+    scanf("%s %c%c",word, &choice, &l);
 
     switch (choice) {
         case 'a':
