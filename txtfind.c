@@ -13,8 +13,11 @@ void print_similar_words(char *str);
 
 int main(){
     char word[WORD];
-
-    char choice = (char) getchar();
+    char choice;
+    char l;
+    
+    scanf("%s %c %c",word, &choice, &l);
+    
     switch (choice) {
         case 'a':
             print_lines(word);
