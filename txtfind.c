@@ -112,7 +112,7 @@ int main() {
     //choice for the users choise and l for the blank line '\n'
     char choice,l;
     //Gets the user choose
-    scanf("%s %choice%choice", word, &choice, &l);
+    scanf(" %s %c %c", word, &choice, &l);
 
 
     if (choice == 'a') {
